@@ -7,6 +7,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Src", "Src", "{118B5C1E-464
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UI.Web.ApiGateway", "Src\UI.Web.ApiGateway\UI.Web.ApiGateway.csproj", "{E8699760-FBB3-4528-A713-CF312EFF6580}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI.UserIdentityServices", "Src\UI.UserIdentityServices\UI.UserIdentityServices.csproj", "{C7FA57D4-721F-4228-B195-0C56458A120B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,12 +19,17 @@ Global
 		{E8699760-FBB3-4528-A713-CF312EFF6580}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E8699760-FBB3-4528-A713-CF312EFF6580}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E8699760-FBB3-4528-A713-CF312EFF6580}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7FA57D4-721F-4228-B195-0C56458A120B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7FA57D4-721F-4228-B195-0C56458A120B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7FA57D4-721F-4228-B195-0C56458A120B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7FA57D4-721F-4228-B195-0C56458A120B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{E8699760-FBB3-4528-A713-CF312EFF6580} = {118B5C1E-4649-4746-8980-0D4FF808C278}
+		{C7FA57D4-721F-4228-B195-0C56458A120B} = {118B5C1E-4649-4746-8980-0D4FF808C278}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DBD2509C-B627-431D-947A-12D1B49A5852}
