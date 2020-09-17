@@ -7,7 +7,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Src", "Src", "{118B5C1E-464
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UI.Web.ApiGateway", "Src\UI.Web.ApiGateway\UI.Web.ApiGateway.csproj", "{E8699760-FBB3-4528-A713-CF312EFF6580}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI.UserIdentityServices", "Src\UI.UserIdentityServices\UI.UserIdentityServices.csproj", "{C7FA57D4-721F-4228-B195-0C56458A120B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UI.UserIdentityServices", "Src\UI.UserIdentityServices\UI.UserIdentityServices.csproj", "{C7FA57D4-721F-4228-B195-0C56458A120B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
