@@ -1,23 +1,18 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Threading.Tasks;
-using Autofac;
-using Autofac.Extensions.DependencyInjection;
 using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using UI.UserIdentityServices.Extensions;
 using UI.UserIdentityServices.Models;
+using UI.UserIdentityServices.Services;
 
 namespace UI.UserIdentityServices
 {
@@ -31,7 +26,7 @@ namespace UI.UserIdentityServices
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        public IServiceProvider ConfigureServices(IServiceCollection services)
+        public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<AppIdentityDbContext>(options => 
                     options.UseSqlServer(Configuration["ConnectionString"], sqlServerOptionsAction:sqlOptions=> {
@@ -40,6 +35,15 @@ namespace UI.UserIdentityServices
                     })
             );
             services.AddIdentity<AppUser, IdentityRole>().AddEntityFrameworkStores<AppIdentityDbContext>().AddDefaultTokenProviders();
+
+
+            services.AddHealthChecks()
+                .AddCheck("self", () => HealthCheckResult.Healthy())
+                .AddSqlServer(Configuration["ConnectionString"],
+                    name: "IdentityDB-check",
+                    tags: new string[] { "IdentityDB" });
+            services.AddTransient<ILoginService<AppUser>, LoginService>();
+
             var connectionString = Configuration["ConnectionString"];
             var migrationsAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
             services.AddIdentityServer(x =>
@@ -61,11 +65,7 @@ namespace UI.UserIdentityServices
             });
             services.AddControllers();
             services.AddControllersWithViews();
-            services.AddRazorPages();
-            var container = new ContainerBuilder();
-            container.Populate(services);
-
-            return new AutofacServiceProvider(container.Build());
+            services.AddRazorPages();;
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
