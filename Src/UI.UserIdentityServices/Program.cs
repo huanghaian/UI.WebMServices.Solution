@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using UI.UserIdentityServices.Extensions;
 
 namespace UI.UserIdentityServices
 {
@@ -13,7 +14,7 @@ namespace UI.UserIdentityServices
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            CreateHostBuilder(args).Build().MigrateDbContext<AppIdentityDbContext>().Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
